@@ -6,10 +6,57 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"
   </head>
   <body>
+    <div class = "container m-4 text-center">
+      <div class = "row">
+        <div class = "col">
+          <h1>Welcome to TrackMeet!</h1>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-2"></div>
+        <div class = "col">
+          <p class = "m-4">Hello! This app is designed to help you keep track of the people you have met over time. If you meet someone you know you will interact with in the future, you can create a card of his or her name, where you met, when you met, as well as some interesting facts that you can bring up next time you meet him or her. </p>
+        </div>
+        <div class = "col-2"></div>
+      </div>
+    </div>
     <div class = "container">
       <div class = "row">
-        <div class = "col-4" id = "create-search">
-          <p></p>
+        <div class = "col-5" id = "for-forms">
+          <h2 class = "text-center mb-4">Create Card!</h2>
+          <form id = "create">
+            <div class = "form-row">
+              <div class = "form-group col">
+                <label for "first-name">First Name</label><br>
+                <input type = "name" name = "first-name" id = "first-name" placeholder = "First Name">
+              </div>
+              <div class = "form-group col">
+                <label for "last-name">Last Name</label><br>
+                <input type = "name" name = "last-name" id = "last-name" placeholder = "Last Name">
+              </div>
+            </div>
+            <div class = "form-row">
+              <div class = "form-group col">
+                <label for "where">Where did you meet this person?</label><br>
+                <input type = "text" name = "where" id = "where" placeholder = "Type in the Location Here">
+              </div>
+            </div>
+            <div class = "form-row">
+              <div class = "form-group col">
+                <label for "when">When did you meet this person?</label><br>
+                <input type = "date" name = "when" id = "when" >
+              </div>
+            </div>
+            <div class = "form-row">
+              <div class = "form-group col">
+                <label for "what">What are three interesting things about this person?</label><br>
+                <input type = "text" name = "what" id = "what1" placeholder = "Something interested about this person"><br>
+                <input type = "text" name = "what" id = "what2" placeholder = "Something interested about this person"><br>
+                <input type = "text" name = "what" id = "what3" placeholder = "Something interested about this person"><br>
+              </div>
+            </div>
+            <button type="submit">Create!</button>
+          </form>
         </div>
         <div class = "col" id = "display">
         </div>
