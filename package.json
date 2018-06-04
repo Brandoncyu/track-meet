@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify main.js -o bundle.js",
-    "watch": "watchify main.js -o bundle.js",
+    "build": "browserify scripts/main.js -o bundle.js",
+    "watch": "watchify scripts/main.js -o bundle.js",
     "dev-server": "live-server .",
     "dev": "run-all \"npm run watch\" \"npm run dev-server\""
   },
