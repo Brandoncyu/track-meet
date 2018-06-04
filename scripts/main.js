@@ -1,3 +1,5 @@
+const cardRenderer = require('./newScripts/cardRenderer')
+
 const adding = document.getElementById('add')
 
 adding.addEventListener('click', (event)=>{
@@ -6,8 +8,9 @@ adding.addEventListener('click', (event)=>{
   let newInput = document.createElement('input')
   newInput.setAttribute('placeholder', "Something interesting about this person")
   let space = document.createElement('br')
-  bigWhat.appendChild(newInput)
   bigWhat.appendChild(space)
+  bigWhat.appendChild(newInput)
+
 })
 
 const create = document.getElementById('create')
@@ -34,12 +37,13 @@ create.addEventListener('submit', (event)=>{
     'when': when,
     'what': what
   }
-  let importedData = JSON.parse(localStorage.getItem('cards'))
-  if (importedData == null) importedData = []
-  console.log(importedData)
-  importedData.push(exportedValues)
-  console.log(importedData)
-  localStorage.setItem('cards', JSON.stringify(importedData))
-
-  document.getElementById('create').reset();
+  cardRenderer(exportedValues)
+  // let importedData = JSON.parse(localStorage.getItem('cards'))
+  // if (importedData == null) importedData = []
+  // console.log(importedData)
+  // importedData.push(exportedValues)
+  // console.log(importedData)
+  // localStorage.setItem('cards', JSON.stringify(importedData))
+  //
+  // document.getElementById('create').reset();
 })
