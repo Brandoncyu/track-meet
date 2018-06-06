@@ -3,6 +3,7 @@ function cardRenderer({firstName, lastName, where, when, what}, index){
   let display = document.getElementById('card-display')
   let space = document.createElement('br')
   let newDiv = document.createElement('div')
+  newDiv.setAttribute('class', 'card')
 
   if (firstName !== '' || lastName !== ''){
     let newHeader = document.createElement('h3')
