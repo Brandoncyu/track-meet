@@ -345,3 +345,37 @@ const dateSorter = function (event){
 }
 
 sortDate.addEventListener('click', dateSorter)
+
+document.getElementById('search')
+
+const searcher = function(event){
+  event.preventDefault()
+  let myInput = document.getElementById('myInput').value
+  myInput = myInput.toLowerCase()
+  console.log(myInput)
+  let newInfo = []
+  let queriedData = JSON.parse(localStorage.getItem('cards'))
+  for (let i = 0; i < queriedData.length; i++){
+    let objectItem = queriedData[i]
+    let count = 0
+    for (val1 in objectItem){
+      let objectPair = objectItem[val1]
+      if (typeof(objectPair) === 'string'){
+        if (objectPair.toLowerCase().includes(myInput)) count++
+      }
+      else {
+        for (val2 in objectPair){
+          let objectItem2 = objectPair[val2]
+          if (objectItem2.toLowerCase().includes(myInput)) count++
+        }
+      }
+    }
+    if (count > 0) newInfo.push(queriedData[i])
+  }
+
+  document.getElementById('card-display').innerHTML = ''
+
+  newInfo.forEach((element, index) => cardRenderer(element, index))
+}
+
+search.addEventListener('submit', searcher)
