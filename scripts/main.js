@@ -1,4 +1,5 @@
 const cardRenderer = require('./cards/Renderer')
+cardRendererNoButtons = require('./cards/RendererNoButtons')
 
 let importedData = JSON.parse(localStorage.getItem('cards'))
 if (importedData == null) importedData = []
@@ -375,7 +376,7 @@ const searcher = function(event){
 
   document.getElementById('card-display').innerHTML = ''
 
-  newInfo.forEach((element, index) => cardRenderer(element, index))
+  newInfo.forEach((element, index) => cardRendererNoButtons(element, index))
 }
 
 search.addEventListener('submit', searcher)
