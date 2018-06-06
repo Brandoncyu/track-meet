@@ -470,4 +470,16 @@ const searcher = function(event){
 
 search.addEventListener('submit', searcher)
 
+const reset = document.getElementById('reset')
+
+const resetter = function(event){
+  event.preventDefault()
+  document.getElementById('card-display').innerHTML = ''
+  document.getElementById('myInput').value = '';
+  let importedData = JSON.parse(localStorage.getItem('cards'))
+  importedData.forEach((element, index) => cardRenderer(element, index))
+}
+
+reset.addEventListener('click', resetter)
+
 },{"./cards/Renderer":1}]},{},[2]);
