@@ -207,6 +207,11 @@ const firstNameSorter = function (event){
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
     sortedData.forEach((element, index) => cardRenderer(element, index))
+    let updateButtons = document.querySelectorAll('#update')
+    updateButtons.forEach(element => element.addEventListener('click', update))
+//
+    let deleteButtons = document.querySelectorAll('#delete')
+    deleteButtons.forEach(element => element.addEventListener('click', remove))
     firstNameOrder = 'opposite'
   } else {
     sortedData.sort(function (b, a){
@@ -225,6 +230,11 @@ const firstNameSorter = function (event){
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
     sortedData.forEach((element, index) => cardRenderer(element, index))
+    let updateButtons = document.querySelectorAll('#update')
+    updateButtons.forEach(element => element.addEventListener('click', update))
+//
+    let deleteButtons = document.querySelectorAll('#delete')
+    deleteButtons.forEach(element => element.addEventListener('click', remove))
     firstNameOrder = ''
     }
 
@@ -257,6 +267,11 @@ const lastNameSorter = function (event){
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
     sortedData.forEach((element, index) => cardRenderer(element, index))
+    let updateButtons = document.querySelectorAll('#update')
+    updateButtons.forEach(element => element.addEventListener('click', update))
+//
+    let deleteButtons = document.querySelectorAll('#delete')
+    deleteButtons.forEach(element => element.addEventListener('click', remove))
     lastNameOrder = 'opposite'
   } else {
     sortedData.sort(function (b, a){
@@ -275,6 +290,11 @@ const lastNameSorter = function (event){
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
     sortedData.forEach((element, index) => cardRenderer(element, index))
+    let updateButtons = document.querySelectorAll('#update')
+    updateButtons.forEach(element => element.addEventListener('click', update))
+//
+    let deleteButtons = document.querySelectorAll('#delete')
+    deleteButtons.forEach(element => element.addEventListener('click', remove))
     lastNameOrder = ''
     }
 
@@ -291,24 +311,34 @@ const dateSorter = function (event){
 
   let sortedData = JSON.parse(localStorage.getItem('cards'))
   if (dateOrder !== 'opposite'){
-    sortedData.sort(function (a, b) {
+    importedData.sort(function (a, b) {
       if (a.when > b.when) return 1;
       if (a.when < b.when) return -1;
       return 0;
     })
-    console.log(sortedData)
+    console.log(importedData)
     document.getElementById('card-display').innerHTML = ''
-    sortedData.forEach((element, index) => cardRenderer(element, index))
+    importedData.forEach((element, index) => cardRenderer(element, index))
+    let updateButtons = document.querySelectorAll('#update')
+    updateButtons.forEach(element => element.addEventListener('click', update))
+//
+    let deleteButtons = document.querySelectorAll('#delete')
+    deleteButtons.forEach(element => element.addEventListener('click', remove))
     dateOrder = 'opposite'
   } else {
-    sortedData.sort(function (b, a) {
+    importedData.sort(function (b, a) {
       if (a.when > b.when) return 1;
       if (a.when < b.when) return -1;
       return 0;
     })
-    console.log(sortedData)
+    console.log(importedData)
     document.getElementById('card-display').innerHTML = ''
-    sortedData.forEach((element, index) => cardRenderer(element, index))
+    importedData.forEach((element, index) => cardRenderer(element, index))
+    let updateButtons = document.querySelectorAll('#update')
+    updateButtons.forEach(element => element.addEventListener('click', update))
+//
+    let deleteButtons = document.querySelectorAll('#delete')
+    deleteButtons.forEach(element => element.addEventListener('click', remove))
     dateOrder = ''
     }
 
