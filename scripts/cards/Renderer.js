@@ -1,7 +1,8 @@
-function cardRenderer({firstName, lastName, where, when, what}){
+function cardRenderer({firstName, lastName, where, when, what}, index){
   let display = document.getElementById('card-display')
   let space = document.createElement('br')
   let newDiv = document.createElement('div')
+
   if (firstName !== '' || lastName !== ''){
     let newHeader = document.createElement('h3')
     let nameText = document.createTextNode(`${firstName}` + ` ${lastName}`)
@@ -11,15 +12,15 @@ function cardRenderer({firstName, lastName, where, when, what}){
   }
   if (where !== ''){
     let location = document.createElement('h4')
-    let locationText = document.createTextNode(`Met at ${where}`)
+    let locationText = document.createTextNode(`Location met: ${where}`)
     location.appendChild(locationText)
     newDiv.appendChild(location)
     newDiv.appendChild(space)
   }
-  if (when !== "00-00-0000"){
+  if (when !== "0000-00-00"){
     let newDate = when.split('-')
     let dateContainer = document.createElement('h5')
-    let [month, day, year] = newDate
+    let [year, month, day] = newDate
     if (month == "01") month = "January"
     if (month == "02") month = "February"
     if (month == "03") month = "March"
@@ -60,6 +61,26 @@ function cardRenderer({firstName, lastName, where, when, what}){
     }
     newDiv.appendChild(attributeList)
   }
+  let buttonDiv = document.createElement('div')
+  buttonDiv.setAttribute('class', 'buttons')
+
+  let updateButton = document.createElement('button')
+  updateButton.setAttribute('id', 'update')
+  updateButton.setAttribute('data-id', index)
+  updateText = document.createTextNode('Update')
+  updateButton.appendChild(updateText)
+  buttonDiv.appendChild(updateButton)
+
+  let deleteButton = document.createElement('button')
+  deleteButton.setAttribute('id', 'delete')
+  deleteButton.setAttribute('data-id', index)
+  deleteText = document.createTextNode('Delete')
+  deleteButton.appendChild(deleteText)
+  buttonDiv.appendChild(deleteButton)
+
+  newDiv.appendChild(buttonDiv)
+  newDiv.appendChild(space)
+
   display.appendChild(newDiv)
 }
 
