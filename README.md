@@ -7,7 +7,8 @@ Hello and welcome to TrackMeet! This app was designed to help you keep track of 
 
 ## Getting Started
 1. Fork this depository
-1. Run 'npm run dev' in your browser
+1. Run 'npm install'
+1. Run 'npm run dev' to open project in your browser
 
 ## How it Works
 
