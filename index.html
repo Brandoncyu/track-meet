@@ -12,18 +12,16 @@
   <body>
     <div class = "container-fluid mb-4 " id = "top">
       <div class = "row" id = "topHalf">
-        <div class = "col d-flex flex-column justify-content-center">
-          <h1>TrackMeet!</h1>
+        <div class = "col d-flex flex-column p-4">
+          <h1>TrackMeet</h1>
         </div>
       </div>
       <div class = "row" id = "bottomHalf">
-        <div class = "col d-flex flex-column justify-content-end">
-
-        </div>
-        <div class = "col-6 d-flex flex-column justify-content-end ">
+        <div class = "col-2 d-flex flex-column justify-content-end "></div>
+        <div class = "col d-flex flex-column justify-content-center">
           <p class = "pr-4 ">Hello and welcome to TrackMeet! This app was designed to help you keep track of the people you have met over time. If you meet people you know you will interact with in the future, you can create a card of their name, where you met, when you met, as well as some interesting facts that you can bring up next time you meet them! </p>
         </div>
-
+        <div class = "col-2 d-flex flex-column justify-content-end "></div>
 
       </div>
     </div>
@@ -148,7 +146,7 @@
                     <button id="add" class = "btn btn-sm">+add another attribute</button>
                   </div>
                 </div>
-                <button type="submit" id = "make">Create!</button>
+                <button type="submit" class = "btn btn-primary btn-lg btn-block" id = "make">Create</button>
               </form>
             </div>
             <button class="collapsible">Search Your Cards!</button>
@@ -156,17 +154,19 @@
               <form id ="search" class = "text-center" >
                 <h2 class = "text-center mb-4" >Search Your Cards!</h2>
                 <input type="text" id="myInput" class="form-control" placeholder="Put in your keywords"><br>
-                <button type = "submit">Search!</button>
-                <button id = 'reset'>Reset!</button><br><br>
+                <div class = "d-flex justify-content-around">
+                  <button type = "submit" class = "btn btn-secondary btn-lg ">Search</button>
+                  <button id = "reset" class = "btn btn-secondary btn-lg ">Reset</button>
+                </div>
               </form>
             </div>
             <button class="collapsible">Sort Your Cards!</button>
             <div class="content">
               <form id ="sort" class = "text-center" >
                 <h2 class = "text-center mb-4" >Sort Your Cards!</h2>
-                <button id = "firstSort" class = "m-2">First Name</button>
-                <button id = "lastSort" class = "m-2">Last Name</button>
-                <button id = "dayMeet" class = "m-2">Date Met</button><br>
+                <button id = "firstSort" class = "m-2 btn btn-primary">First Name</button>
+                <button id = "lastSort" class = "m-2 btn btn-warning">Last Name</button>
+                <button id = "dayMeet" class = "m-2 btn btn-danger">Date Met</button><br>
               </form>
             </div>
           </div>

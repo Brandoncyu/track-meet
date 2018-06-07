@@ -2,7 +2,7 @@ function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
   let display = document.getElementById('card-display')
   let space = document.createElement('br')
   let cardDiv = document.createElement('div')
-  cardDiv.setAttribute('class', 'card border-info  mb-4 mr-4')
+  cardDiv.setAttribute('class', 'card border-dark  mb-4 mr-4')
 
   let headerDiv = document.createElement('h3')
   headerDiv.setAttribute('class', 'card-header')
@@ -40,17 +40,17 @@ function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
     if (month == "11") month = "November"
     if (month == "12") month = "December"
     if (month == "00" && day =="00"){
-      dateText = document.createTextNode(`Met in ${year}`)
+      dateText = document.createTextNode(`Met ${year}`)
     } else if (month == "00" && year =='0000') {
-      dateText = document.createTextNode(`Met on (month unknown) ${day}`)
+      dateText = document.createTextNode(`Met (month unknown) ${day}`)
     } else if (month == "00") {
-      dateText = document.createTextNode(`Met on (month unknown) ${day},  ${year}`)
+      dateText = document.createTextNode(`Met (month unknown) ${day},  ${year}`)
     } else if (day == "00"){
-      dateText = document.createTextNode(`Met in ${month} ${year}`)
+      dateText = document.createTextNode(`Met ${month} ${year}`)
     } else if (year == "0000"){
-      dateText = document.createTextNode(`Met on ${month} ${day}`)
+      dateText = document.createTextNode(`Met ${month} ${day}`)
     } else {
-      dateText = document.createTextNode(`Met on ${month} ${day}, ${year}`)
+      dateText = document.createTextNode(`Met ${month} ${day}, ${year}`)
     }
 
     dateContainer.appendChild(dateText)

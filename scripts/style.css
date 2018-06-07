@@ -14,8 +14,8 @@
 }
 
 .collapsible {
-    background-color: lightgreen;
-    color: black;
+    background-color: dodgerblue;
+    color: white;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -28,7 +28,7 @@
 }
 
 .collapsible:hover {
-    background-color: lime;
+    background-color: deepskyblue;
 }
 
 
@@ -53,15 +53,22 @@
 }
 
 #topHalf{
-  height: 200px;
+  height: 300px;
 }
 
 #bottomHalf{
-  height: 400px;
+  height: 300px;
+
+}
+
+#bottomHalf p{
+  color: black;
   font-size: 20px;
-  text-align: right;
-  color: white;
-  text-shadow: 1px 1px black;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  border-style: solid;
+  padding: 15px
 }
 
 h1{

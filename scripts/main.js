@@ -126,7 +126,8 @@ const update = function(event){
   let createForm = document.querySelector('#create')
   createForm.removeChild(makeButton)
   formUpdate = document.createElement('button')
-  formUpdateText = document.createTextNode('Update Your Card!')
+  formUpdate.setAttribute('class', 'btn btn-primary btn-lg btn-block')
+  formUpdateText = document.createTextNode('Update Your Card')
   formUpdate.appendChild(formUpdateText)
 
   createForm.appendChild(formUpdate)
@@ -164,7 +165,7 @@ const update = function(event){
       document.querySelector('#newInputArea').innerHTML = ''
 
     }
-    document.querySelector('#createTitle').innerHTML = "Create Card!"
+    document.querySelector('#createTitle').innerHTML = "Create Card"
 
 
     createForm.removeChild(formUpdate)
@@ -173,6 +174,7 @@ const update = function(event){
     newCreateButton.appendChild(newCreateButtonText)
     newCreateButton.setAttribute('type', 'submit')
     newCreateButton.setAttribute('id', 'make')
+    newCreateButton.setAttribute('class', 'btn btn-primary btn-lg btn-block')
 
     createForm.appendChild(newCreateButton)
 

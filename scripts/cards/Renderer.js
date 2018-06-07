@@ -2,13 +2,13 @@ function cardRenderer({firstName, lastName, where, when, what}, index){
   let display = document.getElementById('card-display')
   let space = document.createElement('br')
   let cardDiv = document.createElement('div')
-  cardDiv.setAttribute('class', 'card border-info mb-4 mr-2')
+  cardDiv.setAttribute('class', 'card border-dark mb-4 mr-2')
 
   let headerDiv = document.createElement('h3')
   headerDiv.setAttribute('class', 'card-header')
 
   let bodyDiv = document.createElement('div')
-  bodyDiv.setAttribute('class', 'card-body')
+  bodyDiv.setAttribute('class', 'card-body ')
 
   if (firstName !== '' || lastName !== ''){
     let nameText = document.createTextNode(`${firstName}` + ` ${lastName}`)
@@ -40,17 +40,17 @@ function cardRenderer({firstName, lastName, where, when, what}, index){
     if (month == "11") month = "November"
     if (month == "12") month = "December"
     if (month == "00" && day =="00"){
-      dateText = document.createTextNode(`Met in ${year}`)
+      dateText = document.createTextNode(`Met ${year}`)
     } else if (month == "00" && year =='0000') {
-      dateText = document.createTextNode(`Met on (month unknown) ${day}`)
+      dateText = document.createTextNode(`Met (month unknown) ${day}`)
     } else if (month == "00") {
-      dateText = document.createTextNode(`Met on (month unknown) ${day},  ${year}`)
+      dateText = document.createTextNode(`Met (month unknown) ${day},  ${year}`)
     } else if (day == "00"){
-      dateText = document.createTextNode(`Met in ${month} ${year}`)
+      dateText = document.createTextNode(`Met ${month} ${year}`)
     } else if (year == "0000"){
-      dateText = document.createTextNode(`Met on ${month} ${day}`)
+      dateText = document.createTextNode(`Met ${month} ${day}`)
     } else {
-      dateText = document.createTextNode(`Met on ${month} ${day}, ${year}`)
+      dateText = document.createTextNode(`Met ${month} ${day}, ${year}`)
     }
 
     dateContainer.appendChild(dateText)
@@ -74,7 +74,7 @@ function cardRenderer({firstName, lastName, where, when, what}, index){
 
   let updateButton = document.createElement('button')
   updateButton.setAttribute('id', 'update')
-  updateButton.setAttribute('class', 'btn-block')
+  updateButton.setAttribute('class', 'btn btn-link btn-lg')
   updateButton.setAttribute('data-id', index)
   updateText = document.createTextNode('Update')
   updateButton.appendChild(updateText)
@@ -83,7 +83,7 @@ function cardRenderer({firstName, lastName, where, when, what}, index){
   let deleteButton = document.createElement('button')
   deleteButton.setAttribute('id', 'delete')
   deleteButton.setAttribute('data-id', index)
-  deleteButton.setAttribute('class', 'btn-block')
+  deleteButton.setAttribute('class', 'btn btn-link btn-lg')
   deleteText = document.createTextNode('Delete')
   deleteButton.appendChild(deleteText)
   buttonDiv.appendChild(deleteButton)
