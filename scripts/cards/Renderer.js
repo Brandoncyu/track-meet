@@ -1,22 +1,27 @@
 function cardRenderer({firstName, lastName, where, when, what}, index){
   let display = document.getElementById('card-display')
   let space = document.createElement('br')
-  let newDiv = document.createElement('div')
-  newDiv.setAttribute('class', 'card')
+  let cardDiv = document.createElement('div')
+  cardDiv.setAttribute('class', 'card border-info mb-4 mr-2')
+
+  let headerDiv = document.createElement('h3')
+  headerDiv.setAttribute('class', 'card-header')
+
+  let bodyDiv = document.createElement('div')
+  bodyDiv.setAttribute('class', 'card-body')
 
   if (firstName !== '' || lastName !== ''){
-    let newHeader = document.createElement('h3')
     let nameText = document.createTextNode(`${firstName}` + ` ${lastName}`)
-    newHeader.appendChild(nameText)
-    newDiv.appendChild(newHeader)
-    newDiv.appendChild(space)
+    headerDiv.appendChild(nameText)
+    cardDiv.appendChild(headerDiv)
+    cardDiv.appendChild(space)
   }
   if (where !== ''){
     let location = document.createElement('h4')
     let locationText = document.createTextNode(`Location met: ${where}`)
     location.appendChild(locationText)
-    newDiv.appendChild(location)
-    newDiv.appendChild(space)
+    bodyDiv.appendChild(location)
+    bodyDiv.appendChild(space)
   }
   if (when !== "0000-00-00"){
     let newDate = when.split('-')
@@ -49,24 +54,27 @@ function cardRenderer({firstName, lastName, where, when, what}, index){
     }
 
     dateContainer.appendChild(dateText)
-    newDiv.appendChild(dateContainer)
-    newDiv.appendChild(space)
+    bodyDiv.appendChild(dateContainer)
+    bodyDiv.appendChild(space)
   }
   if (what.length > 0){
     let attributeList = document.createElement('ul')
+    attributeList.setAttribute('class', 'list-group list-group-flush')
     for (i = 0; i < what.length; i++){
       let listItem = document.createElement('li')
+      listItem.setAttribute('class', 'list-group-item')
       let listText = document.createTextNode(what[i])
       listItem.appendChild(listText)
       attributeList.appendChild(listItem)
     }
-    newDiv.appendChild(attributeList)
+    bodyDiv.appendChild(attributeList)
   }
   let buttonDiv = document.createElement('div')
-  buttonDiv.setAttribute('class', 'buttons')
+  buttonDiv.setAttribute('class', 'card-footer buttons d-flex justify-content-between')
 
   let updateButton = document.createElement('button')
   updateButton.setAttribute('id', 'update')
+  updateButton.setAttribute('class', 'btn-block')
   updateButton.setAttribute('data-id', index)
   updateText = document.createTextNode('Update')
   updateButton.appendChild(updateText)
@@ -75,14 +83,18 @@ function cardRenderer({firstName, lastName, where, when, what}, index){
   let deleteButton = document.createElement('button')
   deleteButton.setAttribute('id', 'delete')
   deleteButton.setAttribute('data-id', index)
+  deleteButton.setAttribute('class', 'btn-block')
   deleteText = document.createTextNode('Delete')
   deleteButton.appendChild(deleteText)
   buttonDiv.appendChild(deleteButton)
 
-  newDiv.appendChild(buttonDiv)
-  newDiv.appendChild(space)
+  cardDiv.appendChild(bodyDiv)
 
-  display.appendChild(newDiv)
+  cardDiv.appendChild(buttonDiv)
+
+
+  display.appendChild(cardDiv)
+  display.appendChild(space)
 }
 
 module.exports = cardRenderer

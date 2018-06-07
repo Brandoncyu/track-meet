@@ -6,8 +6,66 @@
 }
 
 .card{
-  width: 45%;
+  min-width: 350px;
+  max-width: 435px;
   margin-bottom: 50px;
-  margin-right: 25px;
-  padding: 20px
+  /* margin-right: 25px; */
+
+}
+
+.collapsible {
+    background-color: lightgreen;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: solid;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    border-radius: 30px;
+    border-color: white
+}
+
+.collapsible:hover {
+    background-color: lime;
+}
+
+
+
+.content {
+    padding: 18px;
+    display: none;
+    overflow: hidden;
+    background-color: white;
+    border-style: inset;
+    border-radius: 30px;
+    width: 95%;
+    margin: auto
+}
+
+#top{
+  vertical-align: middle;
+  background: url("../splash-image.jpg") no-repeat center ;
+  background-size: cover;
+  background-blend-mode: lighten;
+
+}
+
+#topHalf{
+  height: 200px;
+}
+
+#bottomHalf{
+  height: 400px;
+  font-size: 20px;
+  text-align: right;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+h1{
+  font-size: 100px;
+  color: white;
+  text-shadow: 2px 2px black;
 }

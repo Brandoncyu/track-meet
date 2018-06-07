@@ -1,22 +1,27 @@
 function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
   let display = document.getElementById('card-display')
   let space = document.createElement('br')
-  let newDiv = document.createElement('div')
-  newDiv.setAttribute('class', 'card')
+  let cardDiv = document.createElement('div')
+  cardDiv.setAttribute('class', 'card border-info  mb-4 mr-4')
+
+  let headerDiv = document.createElement('h3')
+  headerDiv.setAttribute('class', 'card-header')
+
+  let bodyDiv = document.createElement('div')
+  bodyDiv.setAttribute('class', 'card-body')
 
   if (firstName !== '' || lastName !== ''){
-    let newHeader = document.createElement('h3')
     let nameText = document.createTextNode(`${firstName}` + ` ${lastName}`)
-    newHeader.appendChild(nameText)
-    newDiv.appendChild(newHeader)
-    newDiv.appendChild(space)
+    headerDiv.appendChild(nameText)
+    cardDiv.appendChild(headerDiv)
+    cardDiv.appendChild(space)
   }
   if (where !== ''){
     let location = document.createElement('h4')
     let locationText = document.createTextNode(`Location met: ${where}`)
     location.appendChild(locationText)
-    newDiv.appendChild(location)
-    newDiv.appendChild(space)
+    bodyDiv.appendChild(location)
+    bodyDiv.appendChild(space)
   }
   if (when !== "0000-00-00"){
     let newDate = when.split('-')
@@ -49,22 +54,28 @@ function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
     }
 
     dateContainer.appendChild(dateText)
-    newDiv.appendChild(dateContainer)
-    newDiv.appendChild(space)
+    bodyDiv.appendChild(dateContainer)
+    bodyDiv.appendChild(space)
   }
   if (what.length > 0){
     let attributeList = document.createElement('ul')
+    attributeList.setAttribute('class', 'list-group list-group-flush')
     for (i = 0; i < what.length; i++){
       let listItem = document.createElement('li')
-      let listText = document.createTextNode(what[i])
+      listItem.setAttribute('class', 'list-group-item')
       listItem.appendChild(listText)
       attributeList.appendChild(listItem)
     }
-    newDiv.appendChild(attributeList)
+    bodyDiv.appendChild(attributeList)
   }
 
 
-  display.appendChild(newDiv)
+  cardDiv.appendChild(bodyDiv)
+
+
+  display.appendChild(space)
+
+  display.appendChild(cardDiv)
 }
 
 module.exports = cardRendererNoButtons

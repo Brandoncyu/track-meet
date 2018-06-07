@@ -12,9 +12,8 @@ adding.addEventListener('click', (event)=>{
   event.preventDefault()
   let newInputArea = document.querySelector('#newInputArea')
   let newInput = document.createElement('input')
-  newInput.setAttribute('placeholder', "Something interesting about this person")
-  let space = document.createElement('br')
-  newInputArea.appendChild(space)
+  newInput.setAttribute('placeholder', "Something interesting about this person");
+  newInput.setAttribute("class", "form-control")
   newInputArea.appendChild(newInput)
 
 })
@@ -48,6 +47,9 @@ create.addEventListener('submit', (event)=>{
 
   importedData.forEach((element, index) => cardRenderer(element, index))
   localStorage.setItem('cards', JSON.stringify(importedData))
+
+  var bottom = document.getElementById("bottom");
+  bottom.scrollIntoView();
 
   let deleteButtons = document.querySelectorAll('#delete')
   deleteButtons.forEach(element => element.addEventListener('click', remove))
@@ -85,13 +87,19 @@ const update = function(event){
   let index = event.target.getAttribute('data-id')
   let object = importedData[index]
 
+  document.getElementById('create').reset();
+  document.querySelector('#newInputArea').innerHTML = ''
+
+  let editingField = document.querySelector('#editor')
+  editingField.setAttribute('style', 'display: block')
+
   let firstName = object.firstName;
   let lastName = object.lastName;
   let where = object.where;
   let [year, month, day] = object.when.split('-');
   let what = object.what;
 
-  document.querySelector('#createTitle').innerHTML ='Edit Your Card'
+  Array.from(document.querySelectorAll('#createTitle')).forEach(element => element.innerHTML ='Edit Your Card')
 
   document.querySelector('#firstname').value = firstName
   document.querySelector('#lastname').value = lastName
@@ -107,9 +115,7 @@ const update = function(event){
       let newInput = document.createElement('input')
       newInput.setAttribute('placeholder', "Something interesting about this person")
       newInput.setAttribute('id', boxId)
-      newInput.setAttribute('class', 'removal')
-      let space = document.createElement('br')
-      newInputArea.appendChild(space)
+      newInput.setAttribute('class', 'removal form-control')
       newInputArea.appendChild(newInput)
     }
     let whatBox = document.getElementById(boxId)
@@ -149,7 +155,7 @@ const update = function(event){
     localStorage.setItem('cards', JSON.stringify(importedData))
     importedData.forEach((element, index) => cardRenderer(element, index))
 
-
+    editingField.setAttribute('style', 'display: none')
 
     document.getElementById('create').reset();
 
@@ -192,7 +198,7 @@ const firstNameSorter = function (event){
 
   let sortedData = JSON.parse(localStorage.getItem('cards'))
   if (firstNameOrder !== 'opposite'){
-    sortedData.sort(function (a,b){
+    importedData.sort(function (a,b){
       var nameA = a.firstName.toUpperCase();
       var nameB = b.firstName.toUpperCase();
       if (nameA < nameB) {
@@ -207,7 +213,7 @@ const firstNameSorter = function (event){
     })
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
-    sortedData.forEach((element, index) => cardRenderer(element, index))
+    importedData.forEach((element, index) => cardRenderer(element, index))
     let updateButtons = document.querySelectorAll('#update')
     updateButtons.forEach(element => element.addEventListener('click', update))
 //
@@ -215,7 +221,7 @@ const firstNameSorter = function (event){
     deleteButtons.forEach(element => element.addEventListener('click', remove))
     firstNameOrder = 'opposite'
   } else {
-    sortedData.sort(function (b, a){
+    importedData.sort(function (b, a){
       var nameA = a.firstName.toUpperCase();
       var nameB = b.firstName.toUpperCase();
       if (nameA < nameB) {
@@ -230,7 +236,7 @@ const firstNameSorter = function (event){
     })
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
-    sortedData.forEach((element, index) => cardRenderer(element, index))
+    importedData.forEach((element, index) => cardRenderer(element, index))
     let updateButtons = document.querySelectorAll('#update')
     updateButtons.forEach(element => element.addEventListener('click', update))
 //
@@ -252,7 +258,7 @@ const lastNameSorter = function (event){
 
   let sortedData = JSON.parse(localStorage.getItem('cards'))
   if (lastNameOrder !== 'opposite'){
-    sortedData.sort(function (a,b){
+    importedData.sort(function (a,b){
       var nameA = a.lastName.toUpperCase();
       var nameB = b.lastName.toUpperCase();
       if (nameA < nameB) {
@@ -267,7 +273,7 @@ const lastNameSorter = function (event){
     })
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
-    sortedData.forEach((element, index) => cardRenderer(element, index))
+    importedData.forEach((element, index) => cardRenderer(element, index))
     let updateButtons = document.querySelectorAll('#update')
     updateButtons.forEach(element => element.addEventListener('click', update))
 //
@@ -275,7 +281,7 @@ const lastNameSorter = function (event){
     deleteButtons.forEach(element => element.addEventListener('click', remove))
     lastNameOrder = 'opposite'
   } else {
-    sortedData.sort(function (b, a){
+    importedData.sort(function (b, a){
       var nameA = a.lastName.toUpperCase();
       var nameB = b.lastName.toUpperCase();
       if (nameA < nameB) {
@@ -290,7 +296,7 @@ const lastNameSorter = function (event){
     })
     console.log(sortedData)
     document.getElementById('card-display').innerHTML = ''
-    sortedData.forEach((element, index) => cardRenderer(element, index))
+    importedData.forEach((element, index) => cardRenderer(element, index))
     let updateButtons = document.querySelectorAll('#update')
     updateButtons.forEach(element => element.addEventListener('click', update))
 //
@@ -310,7 +316,6 @@ let dateOrder
 const dateSorter = function (event){
   event.preventDefault()
 
-  let sortedData = JSON.parse(localStorage.getItem('cards'))
   if (dateOrder !== 'opposite'){
     importedData.sort(function (a, b) {
       if (a.when > b.when) return 1;
@@ -392,3 +397,37 @@ const resetter = function(event){
 }
 
 reset.addEventListener('click', resetter)
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var j;
+
+for (j = 0; j < coll.length; j++) {
+    coll[j].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+}
