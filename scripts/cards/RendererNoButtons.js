@@ -1,3 +1,5 @@
+//this is the same as the card renderer, but you do not add the update or delete buttons.
+
 function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
   let display = document.getElementById('card-display')
   let space = document.createElement('br')
