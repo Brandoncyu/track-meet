@@ -204,9 +204,11 @@ function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
   cardDiv.appendChild(bodyDiv)
 
 
-  display.appendChild(space)
+
 
   display.appendChild(cardDiv)
+
+    display.appendChild(space)
 }
 
 module.exports = cardRendererNoButtons
