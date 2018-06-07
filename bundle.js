@@ -166,6 +166,7 @@ function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
     for (i = 0; i < what.length; i++){
       let listItem = document.createElement('li')
       listItem.setAttribute('class', 'list-group-item')
+      let listText = document.createTextNode(what[i])
       listItem.appendChild(listText)
       attributeList.appendChild(listItem)
     }
@@ -186,6 +187,7 @@ module.exports = cardRendererNoButtons
 },{}],3:[function(require,module,exports){
 const cardRenderer = require('./cards/Renderer')
 cardRendererNoButtons = require('./cards/RendererNoButtons')
+
 
 let importedData = JSON.parse(localStorage.getItem('cards'))
 if (importedData == null) importedData = []

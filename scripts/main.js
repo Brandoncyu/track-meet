@@ -1,6 +1,7 @@
 const cardRenderer = require('./cards/Renderer')
 cardRendererNoButtons = require('./cards/RendererNoButtons')
 
+
 let importedData = JSON.parse(localStorage.getItem('cards'))
 if (importedData == null) importedData = []
 

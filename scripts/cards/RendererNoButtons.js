@@ -63,6 +63,7 @@ function cardRendererNoButtons({firstName, lastName, where, when, what}, index){
     for (i = 0; i < what.length; i++){
       let listItem = document.createElement('li')
       listItem.setAttribute('class', 'list-group-item')
+      let listText = document.createTextNode(what[i])
       listItem.appendChild(listText)
       attributeList.appendChild(listItem)
     }
