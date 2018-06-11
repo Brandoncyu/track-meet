@@ -658,6 +658,13 @@ const resetter = function(event){
   document.getElementById('myInput').value = '';
   let importedData = JSON.parse(localStorage.getItem('cards'))
   importedData.forEach((element, index) => cardRenderer(element, index))
+  //This re-adds event listeners to the update and delete buttons.
+  let updateButtons = document.querySelectorAll('#update')
+  updateButtons.forEach(element => element.addEventListener('click', update))
+
+  let deleteButtons = document.querySelectorAll('#delete')
+  deleteButtons.forEach(element => element.addEventListener('click', remove))
+  dateOrder = ''
 }
 
 reset.addEventListener('click', resetter)
