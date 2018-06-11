@@ -50,6 +50,7 @@ create.addEventListener('submit', (event)=>{
   document.getElementById('card-display').innerHTML = ''
   importedData.push(exportedValues)
 
+
   //This re-renders all the cards (plus the new one).
   importedData.forEach((element, index) => cardRenderer(element, index))
   localStorage.setItem('cards', JSON.stringify(importedData))
@@ -59,11 +60,8 @@ create.addEventListener('submit', (event)=>{
   bottom.scrollIntoView();
 
   //This re-adds event listeners to the update and delete buttons.
-  let deleteButtons = document.querySelectorAll('#delete')
-  deleteButtons.forEach(element => element.addEventListener('click', remove))
 
-  let updateButtons = document.querySelectorAll('#update')
-  updateButtons.forEach(element => element.addEventListener('click', update))
+  deleteAndUpdateButtons()
 
   //this reset the create form and also brings the number of attribute boxes back to 3.
   document.getElementById('create').reset();
@@ -84,16 +82,9 @@ let remove = function(event){
   localStorage.setItem('cards', JSON.stringify(importedData))
 
   //This re-adds event listeners to the update and delete buttons.
-  let deleteButtons = document.querySelectorAll('#delete')
-  deleteButtons.forEach(element => element.addEventListener('click', remove))
-
-  let updateButtons = document.querySelectorAll('#update')
-  updateButtons.forEach(element => element.addEventListener('click', update))
+  deleteAndUpdateButtons()
 }
 
-//this adds the remove function to the delete buttons as an event listener
-let deleteButtons = document.querySelectorAll('#delete')
-deleteButtons.forEach(element => element.addEventListener('click', remove))
 
 //this is the function to update the card's information from local storage
 const update = function(event){
@@ -202,17 +193,21 @@ const update = function(event){
     createForm.appendChild(newCreateButton)
 
     //This re-adds event listeners to the update and delete buttons.
-    let updateButtons = document.querySelectorAll('#update')
-    updateButtons.forEach(element => element.addEventListener('click', update))
-
-    let deleteButtons = document.querySelectorAll('#delete')
-    deleteButtons.forEach(element => element.addEventListener('click', remove))
+    deleteAndUpdateButtons()
   })
 }
 
+
+//this adds the remove function to the delete buttons as an event listener
+let deleteAndUpdateButtons = function(){
+let deleteButtons = document.querySelectorAll('#delete')
+deleteButtons.forEach(element => element.addEventListener('click', remove))
+
 let updateButtons = document.querySelectorAll('#update')
 updateButtons.forEach(element => element.addEventListener('click', update))
+}
 
+deleteAndUpdateButtons()
 
 //this allows you to sort through all you cards based on first name. It has a seperate variable that you can change to determine what order you want to sort.
 const sortFirst = document.querySelector('#firstSort')
@@ -243,11 +238,8 @@ const firstNameSorter = function (event){
     importedData.forEach((element, index) => cardRenderer(element, index))
 
     //This re-adds event listeners to the update and delete buttons.
-    let updateButtons = document.querySelectorAll('#update')
-    updateButtons.forEach(element => element.addEventListener('click', update))
+    deleteAndUpdateButtons()
 
-    let deleteButtons = document.querySelectorAll('#delete')
-    deleteButtons.forEach(element => element.addEventListener('click', remove))
     firstNameOrder = 'opposite'
   } else {
     importedData.sort(function (b, a){
@@ -268,11 +260,7 @@ const firstNameSorter = function (event){
     importedData.forEach((element, index) => cardRenderer(element, index))
 
     //This re-adds event listeners to the update and delete buttons.
-    let updateButtons = document.querySelectorAll('#update')
-    updateButtons.forEach(element => element.addEventListener('click', update))
-
-    let deleteButtons = document.querySelectorAll('#delete')
-    deleteButtons.forEach(element => element.addEventListener('click', remove))
+    deleteAndUpdateButtons()
     firstNameOrder = ''
     }
 
@@ -309,11 +297,7 @@ const lastNameSorter = function (event){
     importedData.forEach((element, index) => cardRenderer(element, index))
 
     //This re-adds event listeners to the update and delete buttons.
-    let updateButtons = document.querySelectorAll('#update')
-    updateButtons.forEach(element => element.addEventListener('click', update))
-
-    let deleteButtons = document.querySelectorAll('#delete')
-    deleteButtons.forEach(element => element.addEventListener('click', remove))
+    deleteAndUpdateButtons()
     lastNameOrder = 'opposite'
   } else {
     importedData.sort(function (b, a){
@@ -334,11 +318,7 @@ const lastNameSorter = function (event){
     importedData.forEach((element, index) => cardRenderer(element, index))
 
     //This re-adds event listeners to the update and delete buttons.
-    let updateButtons = document.querySelectorAll('#update')
-    updateButtons.forEach(element => element.addEventListener('click', update))
-
-    let deleteButtons = document.querySelectorAll('#delete')
-    deleteButtons.forEach(element => element.addEventListener('click', remove))
+    deleteAndUpdateButtons()
     lastNameOrder = ''
     }
 
@@ -364,11 +344,7 @@ const dateSorter = function (event){
     importedData.forEach((element, index) => cardRenderer(element, index))
 
     //This re-adds event listeners to the update and delete buttons.
-    let updateButtons = document.querySelectorAll('#update')
-    updateButtons.forEach(element => element.addEventListener('click', update))
-
-    let deleteButtons = document.querySelectorAll('#delete')
-    deleteButtons.forEach(element => element.addEventListener('click', remove))
+    deleteAndUpdateButtons()
     dateOrder = 'opposite'
   } else {
     importedData.sort(function (b, a) {
@@ -381,11 +357,7 @@ const dateSorter = function (event){
     importedData.forEach((element, index) => cardRenderer(element, index))
 
     //This re-adds event listeners to the update and delete buttons.
-    let updateButtons = document.querySelectorAll('#update')
-    updateButtons.forEach(element => element.addEventListener('click', update))
-
-    let deleteButtons = document.querySelectorAll('#delete')
-    deleteButtons.forEach(element => element.addEventListener('click', remove))
+    deleteAndUpdateButtons()
     dateOrder = ''
     }
 
@@ -443,11 +415,7 @@ const resetter = function(event){
   let importedData = JSON.parse(localStorage.getItem('cards'))
   importedData.forEach((element, index) => cardRenderer(element, index))
   //This re-adds event listeners to the update and delete buttons.
-  let updateButtons = document.querySelectorAll('#update')
-  updateButtons.forEach(element => element.addEventListener('click', update))
-
-  let deleteButtons = document.querySelectorAll('#delete')
-  deleteButtons.forEach(element => element.addEventListener('click', remove))
+  deleteAndUpdateButtons()
   dateOrder = ''
 }
 
