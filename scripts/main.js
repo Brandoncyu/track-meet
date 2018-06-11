@@ -135,13 +135,26 @@ const update = function(event){
   //this removes the "create" button and adds in a new one "update." They seem be identical but they have different event listeners.
   let makeButton = document.getElementById('make')
   let createForm = document.querySelector('#create')
-  createForm.removeChild(makeButton)
-  formUpdate = document.createElement('button')
-  formUpdate.setAttribute('class', 'btn btn-primary btn-lg btn-block')
-  formUpdateText = document.createTextNode('Update Your Card')
-  formUpdate.appendChild(formUpdateText)
+  let newUpdateButton = document.querySelector('#updater')
+  if (makeButton){
+    createForm.removeChild(makeButton)
+    formUpdate = document.createElement('button')
+    formUpdate.setAttribute('class', 'btn btn-primary btn-lg btn-block')
+    formUpdate.setAttribute('id', 'updater')
+    formUpdateText = document.createTextNode('Update Your Card')
+    formUpdate.appendChild(formUpdateText)
 
-  createForm.appendChild(formUpdate)
+    createForm.appendChild(formUpdate)
+  } else if (newUpdateButton){
+    createForm.removeChild(newUpdateButton)
+    formUpdate = document.createElement('button')
+    formUpdate.setAttribute('class', 'btn btn-primary btn-lg btn-block')
+    formUpdate.setAttribute('id', 'updater')
+    formUpdateText = document.createTextNode('Update Your Card')
+    formUpdate.appendChild(formUpdateText)
+
+    createForm.appendChild(formUpdate)
+  }
 
   //this adds the event listener to the update button. It does the same as the create button and re-renders the cards with the updated information. However, it also takes out the new reset button and puts back in a create button.
   formUpdate.addEventListener('click', (event)=>{
